@@ -1,11 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { CalendarDays, Tag } from "lucide-react";
+import ToggleFriendsButton from "./ToggleFriendsButton";
 
 const friendsPromise = async function () {
-  const res = await fetch(
-    "https://keen-keeper-friends-platform.vercel.app/friends.json",
-  );
+  const res = await fetch("https://keen-keeper-friends-platform.vercel.app/friends.json");
   const data = await res.json();
   return data;
 };
@@ -29,7 +28,6 @@ const Friends = async () => {
           </p>
         </div>
       </div>
-
       {/* Cards */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {friends.map((friend) => (
@@ -86,6 +84,9 @@ const Friends = async () => {
           </Link>
         ))}
       </div>
+
+      {/* View All Button */}
+      <ToggleFriendsButton />
     </section>
   );
 };
