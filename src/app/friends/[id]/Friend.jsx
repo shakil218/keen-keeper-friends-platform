@@ -23,7 +23,7 @@ const Friend = ({ friend }) => {
 
   const handleAddTimeline = (type) => {
     const newEntry = {
-      friendId: friend.id, // 🔥 IMPORTANT
+      friendId: friend.id,
       type: type.toLowerCase(),
       title: friend.name,
       date: new Date().toISOString().split("T")[0],
