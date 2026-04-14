@@ -5,7 +5,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-20 border-t border-white/10 bg-linear-to-br from-slate-900 via-[#1e3a5f] to-[#0f172a] text-white">
+    <footer className="border-t border-white/10 bg-linear-to-br from-slate-900 via-[#1e3a5f] to-[#0f172a] text-white">
       <div className="mx-auto max-w-7xl px-6 py-14">
         {/* Top Section */}
         <div className="flex flex-col items-center justify-center text-center">

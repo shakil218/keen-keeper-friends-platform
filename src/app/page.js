@@ -4,7 +4,7 @@ import StatsSection from "@/components/home/StatsSection";
 
 const HomePage = () => {
   return (
-    <div className="min-h-[calc(100vh-573.6px)]">
+    <div className="min-h-[calc(100vh-493.6px)]">
       <Banner />
       <StatsSection />
       <Friends />

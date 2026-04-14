@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import {
   Clock,
@@ -12,46 +11,31 @@ import {
   Edit,
   Handshake,
 } from "lucide-react";
-import call from "../../../assets/call.png";
-import text from "../../../assets/text.png";
-import video from "../../../assets/video.png";
-import meetup from "../../../assets/meetup.png";
 import TimelineList from "@/components/timeline/TimelineList";
+import { toast } from "react-toastify";
+import { useTimeline } from "@/hooks/useTimeLine";
 
 const Friend = ({ friend }) => {
-  // const [timeline, setTimeline] = useState([]);
+  const { timelines, addTimeline } = useTimeline();
 
-  // 👉 ONLY this friend's timeline (important)
-  // const timeline = friend.timeline || [];
-  const [timeline, setTimeline] = useState(() => {
-    return friend?.timeline ? [...friend.timeline] : [];
-  });
+  // 👉 ONLY THIS FRIEND'S TIMELINE
+  const friendTimeline = timelines.filter((t) => t.friendId === friend.id);
 
-  const addTimeline = (type) => {
+  const handleAddTimeline = (type) => {
     const newEntry = {
-      id: Date.now(),
-      type,
-      title: `${friend.name}`,
+      friendId: friend.id, // 🔥 IMPORTANT
+      type: type.toLowerCase(),
+      title: friend.name,
       date: new Date().toISOString().split("T")[0],
     };
 
-    // 👉 THIS replaces previous timeline
-    setTimeline([newEntry]);
-  };
+    addTimeline(newEntry);
 
-  const getIcon = (type) => {
-    switch (type.toLowerCase()) {
-      case "call":
-        return call;
-      case "text":
-        return text;
-      case "video":
-        return video;
-      case "meetup":
-        return meetup;
-      default:
-        return text;
-    }
+    toast.success(`Added ${type} with ${friend.name}!`, {
+      position: "top-center",
+      autoClose: 2000,  
+    });
+
   };
 
   return (
@@ -83,7 +67,6 @@ const Friend = ({ friend }) => {
             </span>
           </div>
 
-          {/* Tags */}
           <div className="flex flex-wrap gap-2 mt-4 justify-center">
             {friend.tags.map((tag, i) => (
               <span
@@ -95,15 +78,12 @@ const Friend = ({ friend }) => {
             ))}
           </div>
 
-          {/* Bio */}
           <p className="text-sm text-gray-600 mt-4 text-center">{friend.bio}</p>
 
-          {/* Email */}
           <p className="text-sm text-gray-500 mt-2 text-center">
             {friend.email}
           </p>
 
-          {/* Actions */}
           <div className="mt-6 space-y-2">
             <button className="w-full flex items-center justify-center gap-2 bg-gray-100 py-2 rounded-lg">
               <Clock className="w-4 h-4" />
@@ -164,7 +144,7 @@ const Friend = ({ friend }) => {
 
             <div className="flex gap-3">
               <button
-                onClick={() => addTimeline("Call")}
+                onClick={() => handleAddTimeline("Call")}
                 className="flex-1 flex items-center justify-center gap-2 bg-indigo-100 text-indigo-600 py-2 rounded-lg"
               >
                 <Phone className="w-4 h-4" />
@@ -172,7 +152,7 @@ const Friend = ({ friend }) => {
               </button>
 
               <button
-                onClick={() => addTimeline("Text")}
+                onClick={() => handleAddTimeline("Text")}
                 className="flex-1 flex items-center justify-center gap-2 bg-indigo-100 text-indigo-600 py-2 rounded-lg"
               >
                 <MessageCircle className="w-4 h-4" />
@@ -180,14 +160,15 @@ const Friend = ({ friend }) => {
               </button>
 
               <button
-                onClick={() => addTimeline("Video")}
+                onClick={() => handleAddTimeline("Video")}
                 className="flex-1 flex items-center justify-center gap-2 bg-indigo-100 text-indigo-600 py-2 rounded-lg"
               >
                 <Video className="w-4 h-4" />
                 Video
               </button>
+
               <button
-                onClick={() => addTimeline("Meetup")}
+                onClick={() => handleAddTimeline("Meetup")}
                 className="flex-1 flex items-center justify-center gap-2 bg-indigo-100 text-indigo-600 py-2 rounded-lg"
               >
                 <Handshake className="w-4 h-4" />
@@ -196,36 +177,12 @@ const Friend = ({ friend }) => {
             </div>
           </div>
 
-          {/* ===== FRIEND TIMELINE (ONLY THIS FRIEND) ===== */}
+          {/* ===== FRIEND TIMELINE ===== */}
           <div className="bg-white p-5 rounded-xl shadow-sm">
             <h3 className="font-semibold mb-4">📜 Timeline</h3>
 
-            {/* {timeline.length === 0 ? (
-              <p className="text-sm text-gray-500">No activity yet</p>
-            ) : (
-              <div className="space-y-3">
-                {timeline.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-3 border-b pb-3"
-                  >
-                    <Image
-                      src={getIcon(item.type)}
-                      alt={item.type}
-                      width={32}
-                      height={32}
-                    />
-
-                    <div>
-                      <h3><span className="font-semibold">{item.type}</span> with <span className="font-semibold">{item.title}</span></h3>
-
-                      <p className="text-xs text-gray-500">📅 {item.date}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )} */}
-            <TimelineList timeline={timeline} getIcon={getIcon} />
+            {/* ✅ FIXED: removed getIcon prop */}
+            <TimelineList timeline={friendTimeline} />
           </div>
         </div>
       </div>

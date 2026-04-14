@@ -19,7 +19,7 @@ const Friends = async () => {
   };
 
   return (
-    <section className="mt-16 max-w-7xl mx-auto px-4 md:px-0">
+    <section className="my-16 max-w-7xl mx-auto px-4 md:px-0">
       {/* Heading */}
       <div className="mb-8 flex items-center justify-between">
         <div>
