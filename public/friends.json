@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Aisha Rahman",
-    "picture": "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+    "picture": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&auto=format&q=80",
     "email": "aisha.rahman@gmail.com",
     "days_since_contact": 18,
     "status": "overdue",
@@ -14,7 +14,7 @@
   {
     "id": 2,
     "name": "Daniel Wong",
-    "picture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+    "picture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&auto=format&q=80",
     "email": "daniel.wong@gmail.com",
     "days_since_contact": 6,
     "status": "on-track",
@@ -26,7 +26,7 @@
   {
     "id": 3,
     "name": "Farhana Islam",
-    "picture": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df",
+    "picture": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=400&fit=crop&auto=format&q=80",
     "email": "farhana.islam@gmail.com",
     "days_since_contact": 11,
     "status": "almost due",
@@ -38,7 +38,7 @@
   {
     "id": 4,
     "name": "Marcus Lee",
-    "picture": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
+    "picture": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop&auto=format&q=80",
     "email": "marcus.lee@gmail.com",
     "days_since_contact": 25,
     "status": "overdue",
@@ -50,7 +50,7 @@
   {
     "id": 5,
     "name": "Nadia Karim",
-    "picture": "https://images.unsplash.com/photo-1517841905240-472988babdf9",
+    "picture": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=400&fit=crop&auto=format&q=80",
     "email": "nadia.karim@gmail.com",
     "days_since_contact": 9,
     "status": "almost due",
@@ -62,7 +62,7 @@
   {
     "id": 6,
     "name": "Ethan Carter",
-    "picture": "https://images.unsplash.com/photo-1504593811423-6dd665756598",
+    "picture": "https://images.unsplash.com/photo-1504593811423-6dd665756598?w=400&h=400&fit=crop&auto=format&q=80",
     "email": "ethan.carter@gmail.com",
     "days_since_contact": 3,
     "status": "on-track",
@@ -74,7 +74,7 @@
   {
     "id": 7,
     "name": "Priya Nair",
-    "picture": "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
+    "picture": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop&auto=format&q=80",
     "email": "priya.nair@gmail.com",
     "days_since_contact": 14,
     "status": "almost due",
@@ -86,7 +86,7 @@
   {
     "id": 8,
     "name": "Samir Hossain",
-    "picture": "https://images.unsplash.com/photo-1504257432389-52343af06ae3",
+    "picture": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&auto=format&q=80",
     "email": "samir.hossain@gmail.com",
     "days_since_contact": 2,
     "status": "on-track",
@@ -98,7 +98,7 @@
   {
     "id": 9,
     "name": "Olivia Chen",
-    "picture": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1",
+    "picture": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=400&fit=crop&auto=format&q=80",
     "email": "olivia.chen@gmail.com",
     "days_since_contact": 20,
     "status": "overdue",
@@ -110,7 +110,7 @@
   {
     "id": 10,
     "name": "Rafiul Kabir",
-    "picture": "https://images.unsplash.com/photo-1502767089025-6572583495b0",
+    "picture": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&h=400&fit=crop&auto=format&q=80",
     "email": "rafiul.kabir@gmail.com",
     "days_since_contact": 5,
     "status": "on-track",
@@ -122,7 +122,7 @@
   {
     "id": 11,
     "name": "Sophia Martinez",
-    "picture": "https://images.unsplash.com/photo-1517365830460-955ce3ccd263",
+    "picture": "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?w=400&h=400&fit=crop&auto=format&q=80",
     "email": "sophia.martinez@gmail.com",
     "days_since_contact": 13,
     "status": "almost due",
@@ -134,7 +134,7 @@
   {
     "id": 12,
     "name": "Jamal Uddin",
-    "picture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+    "picture": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&auto=format&q=80",
     "email": "jamal.uddin@gmail.com",
     "days_since_contact": 30,
     "status": "overdue",
