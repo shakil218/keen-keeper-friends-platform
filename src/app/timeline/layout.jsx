@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Timeline | Keen Keeper",
+  description: "View all friendship interactions including calls, texts, videos, and meetups.",
+};
+
 const TimeLineLayout = ({ children }) => {
   return (
     <div className="min-h-[calc(100vh-493.6px)] flex flex-col bg-gray-50">
