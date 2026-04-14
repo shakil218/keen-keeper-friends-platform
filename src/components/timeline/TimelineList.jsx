@@ -7,7 +7,7 @@ const TimelineList = ({ timeline }) => {
   }
 
   return (
-    <div className="space-y-3 w-full">
+    <div className="space-y-3 w-full animate-fade-in">
       {timeline.map((item,index) => (
         <div
           key={index}

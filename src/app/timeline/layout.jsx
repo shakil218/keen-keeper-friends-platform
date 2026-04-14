@@ -1,11 +1,10 @@
-import Footer from "@/components/shared/footer/Footer";
-import Navbar from "@/components/shared/navbar/Navbar";
-
 const TimeLineLayout = ({ children }) => {
   return (
-    <div className="flex flex-col">
-      {/* PAGE CONTENT AREA */}
-      <main className="flex-1 w-full">{children}</main>
+    <div className="min-h-[calc(100vh-493.6px)] flex flex-col bg-gray-50">
+      {/* CONTENT WRAPPER */}
+      <main className="flex-1 w-full px-4 py-6">
+        <div className="max-w-7xl mx-auto">{children}</div>
+      </main>
     </div>
   );
 };
