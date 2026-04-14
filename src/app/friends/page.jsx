@@ -1,17 +1,18 @@
 import React from 'react';
-import AllFriendsClient from './allFriendsClientComponent/AllFriendsClient';
+import AllFriends from './allFriends/AllFriends';
+import getFriends from '@/lib/getFriends';
 
-const friendsPromise = async function () {
-  const res = await fetch("https://keen-keeper-friends-platform.vercel.app/friends.json");
-  const data = await res.json();
-  return data;
-};
+// const friendsPromise = async function () {
+//   const res = await fetch("http://localhost:3000/friends.json");
+//   const data = await res.json();
+//   return data;
+// };
 
 const AllFriendsPage = async () => {
-  const friends = await friendsPromise();
+  const friends = await getFriends();
   return (
     <div>
-        <AllFriendsClient friends={friends} />
+        <AllFriends friends={friends} />
     </div>
   );
 };

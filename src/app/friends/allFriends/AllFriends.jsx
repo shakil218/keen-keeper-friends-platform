@@ -1,17 +1,17 @@
-import Link from "next/link";
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
-import { CalendarDays, Tag } from "lucide-react";
-import ToggleFriendsButton from "./ToggleFriendsButton";
-import getFriends from "@/lib/getFriends";
+import { CalendarDays, Search, Tag } from "lucide-react";
+import Link from "next/link";
 
-// const friendsPromise = async function () {
-//   const res = await fetch("http://localhost:3000/friends.json");
-//   const data = await res.json();
-//   return data;
-// };
+const AllFriends = ({ friends }) => {
+  const [search, setSearch] = useState("");
 
-const Friends = async () => {
-  const friends = await getFriends();
+  const filteredFriends = friends.filter((friend) =>
+    friend.name.toLowerCase().includes(search.toLowerCase()),
+  );
+
   const statusStyle = {
     overdue: "bg-rose-100 text-rose-700 border border-rose-200",
     "almost due": "bg-amber-100 text-amber-700 border border-amber-200",
@@ -19,19 +19,29 @@ const Friends = async () => {
   };
 
   return (
-    <section className="mt-16 max-w-7xl mx-auto px-4 md:px-0">
-      {/* Heading */}
-      <div className="mb-8 flex items-center justify-between">
-        <div>
-          <h2 className="text-3xl font-bold text-slate-900">Your Friends</h2>
-          <p className="mt-1 text-sm text-slate-500">
-            Keep track of the people who matter most.
-          </p>
-        </div>
+    <div className="min-h-screen bg-gray-50 px-6 py-10">
+      {/* Header */}
+      <div className="max-w-5xl mx-auto text-center mb-8">
+        <h1 className="text-3xl font-bold text-gray-800">👥 All Friends</h1>
+        <p className="text-gray-500 mt-2">
+          Manage and explore your connections
+        </p>
       </div>
-      {/* Cards */}
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {friends.map((friend) => (
+
+      {/* Search */}
+      <div className="max-w-md mx-auto mb-10 relative">
+        <Search className="absolute left-3 top-3 text-gray-400 w-5 h-5" />
+        <input
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search friends..."
+          className="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+      </div>
+
+      {/* Grid */}
+      <div className="max-w-6xl mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {filteredFriends.map((friend) => (
           <Link
             key={friend.id}
             href={`/friends/${friend.id}`}
@@ -85,11 +95,8 @@ const Friends = async () => {
           </Link>
         ))}
       </div>
-
-      {/* View All Button */}
-      <ToggleFriendsButton />
-    </section>
+    </div>
   );
 };
 
-export default Friends;
+export default AllFriends;

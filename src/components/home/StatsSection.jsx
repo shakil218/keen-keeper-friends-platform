@@ -1,4 +1,5 @@
 
+import getFriends from "@/lib/getFriends";
 import {
   Users,
   CheckCircle2,
@@ -6,14 +7,14 @@ import {
   CalendarDays,
 } from "lucide-react";
 
-const friendsPromise = async function () {
-  const res = await fetch("https://keen-keeper-friends-platform.vercel.app/friends.json");
-  const data = await res.json();
-  return data;
-};
+// const friendsPromise = async function () {
+//   const res = await fetch("http://localhost:3000/friends.json");
+//   const data = await res.json();
+//   return data;
+// };
 
 const StatsSection = async () => {
-  const friends = await friendsPromise();
+  const friends = await getFriends();
   // Total Friends
   const totalFriends = friends.length;
 
