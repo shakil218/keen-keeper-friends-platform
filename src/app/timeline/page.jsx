@@ -31,8 +31,8 @@ const TimelinePage = () => {
 
     // ⬆️ SORT
     .sort((a, b) => {
-      const dateA = new Date(a.date);
-      const dateB = new Date(b.date);
+      const dateA = new Date(a.next_due_date || a.date);
+      const dateB = new Date(b.next_due_date || b.date);
 
       return sort === "newest" ? dateB - dateA : dateA - dateB;
     });

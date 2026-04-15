@@ -27,15 +27,15 @@ const Friend = ({ friend }) => {
       type: type.toLowerCase(),
       title: friend.name,
       date: new Date().toISOString().split("T")[0],
+      next_due_date: friend.next_due_date,
     };
 
     addTimeline(newEntry);
 
     toast.success(`Added ${type} with ${friend.name}!`, {
       position: "top-center",
-      autoClose: 2000,  
+      autoClose: 2000,
     });
-
   };
 
   return (

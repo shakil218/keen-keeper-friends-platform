@@ -1,33 +1,56 @@
 "use client";
 
 import { TimelineContext } from "@/context/TimeLineContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const TimelineProvider = ({ children }) => {
-  const [timelines, setTimelines] = useState([]);
+  // ✅ LOAD timelines from localStorage
+  const [timelines, setTimelines] = useState(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("timelines");
+      return stored ? JSON.parse(stored) : [];
+    }
+    return [];
+  });
 
   // 🔥 GLOBAL HISTORY (for stats)
-  const [history, setHistory] = useState([]);
+  // ✅ LOAD history from localStorage
+  const [history, setHistory] = useState(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("history");
+      return stored ? JSON.parse(stored) : [];
+    }
+    return [];
+  });
 
   const addTimeline = (newItem) => {
     setTimelines((prev) => {
-      // ✅ FRIEND: only latest per friend
       const filtered = prev.filter(
-        (item) => item.friendId !== newItem.friendId
+        (item) => item.friendId !== newItem.friendId,
       );
 
       return [newItem, ...filtered];
     });
 
-    // 🔥 HISTORY: keep everything (NO duplicates removed)
+    // 🔥 HISTORY: keep everything
     setHistory((prev) => [newItem, ...prev]);
   };
+
+  // ✅ SAVE timelines to localStorage
+  useEffect(() => {
+    localStorage.setItem("timelines", JSON.stringify(timelines));
+  }, [timelines]);
+
+  // ✅ SAVE history to localStorage
+  useEffect(() => {
+    localStorage.setItem("history", JSON.stringify(history));
+  }, [history]);
 
   return (
     <TimelineContext.Provider
       value={{
-        timelines,   // friend view (latest only)
-        history,     // analytics view (full data)
+        timelines,
+        history,
         addTimeline,
       }}
     >
