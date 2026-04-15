@@ -1,17 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import TimelineList from "@/components/timeline/TimelineList";
 import { useTimeline } from "@/hooks/useTimeLine";
+import { useLoader } from "@/context/LoaderContext";
 
 const TimelinePage = () => {
   const { history } = useTimeline();
+
+  // 🔥 LOADER (ADDED ONLY)
+  const { setLoading } = useLoader();
 
   // 🔍 STATES
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
   const [sort, setSort] = useState("newest");
+
+  // 🚀 LOADING ON DATA CHANGE (ADDED ONLY)
+  useEffect(() => {
+    setLoading(true);
+
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, [history, setLoading]);
 
   // 🚀 FILTER + SEARCH + SORT ENGINE
   const processedTimelines = history

@@ -5,6 +5,8 @@ import Navbar from "@/components/shared/navbar/Navbar";
 import Footer from "@/components/shared/footer/Footer";
 import { TimelineProvider } from "@/lib/providers/TimeLineProvider";
 import Providers from "./providers";
+import GlobalLoaderWrapper from "@/components/shared/Loader/GlobalLoaderWrapper";
+import { LoaderProvider } from "@/context/LoaderContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,12 +30,22 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <TimelineProvider>
-          <Navbar />
-          <Providers>{children}</Providers>
-          <Footer />
-          <ToastContainer />
-        </TimelineProvider>
+        {/* 1️⃣ FIRST: LoaderProvider */}
+        <LoaderProvider>
+
+          {/* 2️⃣ THEN: everything else */}
+          <TimelineProvider>
+
+            <GlobalLoaderWrapper />
+
+            <Navbar />
+            <Providers>{children}</Providers>
+            <Footer />
+            <ToastContainer />
+
+          </TimelineProvider>
+
+        </LoaderProvider>
       </body>
     </html>
   );
