@@ -24,44 +24,57 @@ It ensures you never lose touch with the people who matter most.
 
 ---
 
-### 📜 Timeline System
+### 📜 Timeline System (Core Feature)
 - Log interactions:
   - 📞 Call
   - 💬 Text
   - 🎥 Video
   - 🤝 Meetup
 - Dynamic timeline per friend
-- Global timeline for all interactions
-- 🚫 Duplicate prevention (only latest interaction per friend)
+- Global timeline history for analytics
+- 🚫 Duplicate prevention (only latest per friend)
+- 💾 Persistent data using **localStorage**
 
 ---
 
-### 🔍 Smart Timeline Filters
-- Filter by:
+### 🔍 Smart Timeline Features
+- Filter by interaction type:
   - Call / Text / Video / Meetup
-- Sort:
+- Sort timeline:
   - Newest → Oldest
   - Oldest → Newest
-- Search:
+- Search functionality:
   - Partial match by friend name
-  - Interaction type search
+  - Partial match by interaction type
+- Fully dynamic UI updates
 
 ---
 
 ### 📊 Friendship Analytics
 - Interactive Pie Chart (Recharts)
-- Real-time data updates
+- Real-time updates from global history
 - Interaction breakdown:
   - Call / Text / Video / Meetup
+- Visual insights for friendship activity
 
 ---
 
 ### ⚡ UI & UX Features
 - Global loading system
-- Toast notifications
+- Toast notifications (React Toastify)
 - Fully responsive design
 - Clean SaaS-style UI
 - Smooth animations
+- Modern dashboard experience
+
+---
+
+## 🧠 State Management Architecture
+
+- `timelines` → latest interaction per friend
+- `history` → full interaction log for analytics
+- Context API for global state sharing
+- localStorage sync for persistence across refresh
 
 ---
 
@@ -73,6 +86,7 @@ It ensures you never lose touch with the people who matter most.
 | UI | React + Tailwind CSS |
 | State | Context API |
 | Charts | Recharts |
+| Storage | localStorage |
 | Icons | Lucide React |
 | Notifications | React Toastify |
 
@@ -109,7 +123,7 @@ It ensures you never lose touch with the people who matter most.
 ## ⚙️ Installation
 
 ```bash
-git clone https://github.com/your-username/keen-keeper.git
+git clone https://github.com/shakil218/keen-keeper-friends-platform.git
 cd keen-keeper
 npm install
 npm run dev
